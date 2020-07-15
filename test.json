@@ -1,0 +1,29 @@
+/* 1 */
+{
+    "_id" : ObjectId("5e8deb495c2d9802c957efdf"),
+    "array" : [ 
+        "item1", 
+        "item2", 
+        "item3"
+    ],
+    "boolean" : false,
+    "string" : "\"Don't worry if it doesn't work right. If everything did, you'd be out of a job\" - Mosher's Law of Software Engineering",
+    "number" : 42,
+    "date" : ISODate("2020-04-08T15:18:33.267Z"),
+    "__v" : 0
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("5f08893c50b96757d906c8d4"),
+    "array" : [ 
+        "item1", 
+        "item2", 
+        "item3"
+    ],
+    "boolean" : false,
+    "string" : "\"Don't worry if it doesn't work right. If everything did, you'd be out of a job\" - Mosher's Law of Software Engineering",
+    "number" : 41,
+    "date" : ISODate("2020-07-10T15:29:00.627Z"),
+    "__v" : 0
+}
