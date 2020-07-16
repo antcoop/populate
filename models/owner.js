@@ -10,7 +10,8 @@ const OwnerSchema = new Schema({
     {
       type: Schema.Types.ObjectId,
       ref: "Pet",
-      count: true 
+      count: true,
+      unique: true
     }
   ]
 }, 
