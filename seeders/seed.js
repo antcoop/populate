@@ -3,8 +3,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/petsAndOwners",
 
 
 const db = require("../models");
-
-console.log("HELLO");
+let count = 0;
 db.Owner.remove({}).then(() => {
 db.Owner.insertMany([
   {
@@ -45,6 +44,10 @@ db.Owner.insertMany([
   }
 ]).then(result => {
   console.log("successfully added owners");
+  count++;
+  if (count === 2) {
+    process.exit();
+  }
 });
 });
 
@@ -73,5 +76,9 @@ db.Pet.insertMany([
   }
 ]).then(result => {
   console.log("successfully added pets");
+  count++;
+  if (count === 2) {
+    process.exit();
+  }
 });
 });
