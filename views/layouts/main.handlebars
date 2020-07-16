@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,30 @@
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/base.css">
 </head>
+
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    
+    <div class="container">
+      <div class="navbar-nav">
+        <span class="nav-item">
+          <a class="nav-link" href="/assign">Assign</a>
+        </span>
+        <span class="nav-item">
+          <a class="nav-link" href="/owners">Owners</a>
+        </span>
+        <span class="nav-item">
+          <a class="nav-link" href="/owners/with/pets">Owners With Pets</a>
+        </span>
+        <span class="nav-item">
+          <a class="nav-link" href="/pets">Pets</a>
+        </span>
+      </div>
+    </div>
   </nav>
   <section class="container">
     {{{ body }}}
   </section>
   </ul>
 </body>
+
 </html>
