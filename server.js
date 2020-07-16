@@ -114,7 +114,7 @@ app.get("/owners/with/pets", (req, res) => {
 app.post("/give/pet/to/owner", ({ body: { pet, owner }}, res) => {
   db.Pet.findByIdAndUpdate(pet, { $set: { owner }}, { new: true })
     .then(({ _id }) => {
-      db.Owner.findByIdAndUpdate(owner, { $push: { pets: _id }}, { new: true })
+      db.Owner.findByIdAndUpdate(owner, { $addToSet: { pets: _id }}, { new: true })
       .then(() => {
         res.redirect('/assign');
       }).catch(err => {
