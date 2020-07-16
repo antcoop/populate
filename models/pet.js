@@ -7,6 +7,10 @@ const PetSchema = new Schema({
   age: Number,
   type: String,
   weight: Number,
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: "Owner"
+  }
 });
 
 const Pet = mongoose.model("Pet", PetSchema);

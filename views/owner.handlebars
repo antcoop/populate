@@ -1,0 +1,7 @@
+<h1>{{name}}</h1>
+<h2>Pets:</h2>
+<div class="list-group">
+{{#each pets}}
+  <a href="/pets/{{name}}" class="list-group-item list-group-item-action">{{name}} | {{type}}</a>
+{{/each}}
+</div>

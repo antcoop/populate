@@ -17,12 +17,43 @@ app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
 // route to get all owners
-app.get("/owners", (req, res) => {
-  db.Owner.find({})
-    .lean()
-    .then(owners =>{
-      return res.render("owners", { owners });
+app.get("/owners/:name?", ({ params: { name }}, res) => {
+  if (name) {
+    db.Owner.findOne({ name })
+    .populate({
+      path: "pets",
+      select: "name type"
     })
+    .lean()
+    .then(owner => {
+      return res.render("owner", owner);
+    });
+  } else {
+    db.Owner.find({})
+      .lean()
+      .then(owners =>{
+        return res.render("owners", { owners });
+      });
+  }
+});
+
+app.get("/pets/:name?", ({ params: { name }}, res) => {
+  if (name) {
+    db.Pet.findOne({ name })
+    .select("name age type -_id")
+    .populate({path: "owner", select: "name -_id"})
+    .lean()
+    .then(pet => {
+      console.log(pet);
+      return res.render("pet", pet);
+    });
+  } else {
+    db.Pet.find({})
+      .lean()
+      .then(pets =>{
+        return res.render("pets", { pets });
+      });
+  }
 });
 
 // route to assign pets to owners
@@ -77,10 +108,10 @@ app.get("/owners/with/pets", (req, res) => {
 });
 
 app.post("/give/pet/to/owner", ({ body: { pet, owner }}, res) => {
-  db.Pet.findOne({ _id: pet })
+  db.Pet.findByIdAndUpdate(pet, { $set: { owner }}, { new: true })
     .then(({ _id }) => {
       db.Owner.findByIdAndUpdate(owner, { $push: { pets: _id }}, { new: true })
-      .then(result => {
+      .then(() => {
         res.redirect('/assign');
       }).catch(err => {
         console.log("Catch", err);
