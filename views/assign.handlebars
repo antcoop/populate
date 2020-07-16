@@ -1,0 +1,21 @@
+<section class="container">
+  <form action="/give/pet/to/owner" method="post">
+    <div class="form-group">
+      <label for="pet">Give Pet</label>
+      <select name="pet" id="pet" class="form-control">
+        {{#each pets}}
+        <option value="{{_id}}">{{name}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="owner">Owner</label>
+      <select name="owner" id="owner" class="form-control">
+        {{#each owners}}
+        <option value="{{_id}}">{{name}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <button class="btn btn-primary">Submit</button>
+  </form>
+</section>

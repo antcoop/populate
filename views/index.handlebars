@@ -1,0 +1,9 @@
+<h1>Owners with Pets</h1>
+{{#each owners }}
+  <h2>{{this.name}} has {{this.petCount}} pets:</h2>
+  <ul>
+  {{#each pets}}
+    <li>{{this.name}}</li>
+  {{/each}}
+  </ul>
+{{/each}}
