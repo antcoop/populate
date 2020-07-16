@@ -58,7 +58,7 @@ app.get("/pets/:name?", ({ params: { name }}, res) => {
 
 app.get("/", (req, res) => {
   return res.redirect("/owners");
-})
+});
 
 // route to assign pets to owners
 app.get("/assign", async (req, res) => {
